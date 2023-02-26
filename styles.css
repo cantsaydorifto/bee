@@ -1,0 +1,86 @@
+:root {
+    --bee-radius: 50px;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(238, 154, 63);
+}
+
+h1 {
+    color: black;
+    margin: 0;
+    padding-top: 10px;
+    height: 30px;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    width: var(--bee-radius);
+    height: var(--bee-radius);
+    top: calc(75vh - var(--bee-radius) - 50px);
+    left: 0;
+    animation: yMovement 5s ease-in-out infinite;
+}
+
+.trail {
+    color: black;
+    height: 4px;
+    width: 40px;
+    position: absolute;
+    top: 28px;
+    left: -45px;
+    line-height: 2px;
+    letter-spacing: 8px;
+    animation: rotate 5s linear infinite;
+    transform-origin: 100% 0;
+}
+
+.bee {
+    width: var(--bee-radius);
+    height: var(--bee-radius);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: xMovement 5s linear infinite;
+}
+
+@keyframes xMovement {
+    0% {
+        transform: translateX(calc(-1*var(--bee-radius)));
+    }
+
+    100% {
+        transform: translateX(calc(100vw + var(--bee-radius)));
+    }
+}
+
+@keyframes yMovement {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(calc(-50vh + var(--bee-radius)));
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateX(calc(-1*var(--bee-radius))) rotate(-45deg);
+    }
+
+    50% {
+        transform: translateX(calc(50vw)) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + var(--bee-radius))) rotate(45deg);
+    }
+}
